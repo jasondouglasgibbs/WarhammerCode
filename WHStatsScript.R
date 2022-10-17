@@ -5,8 +5,9 @@
 library(readxl)
 library(tidyverse)
 library(plotly)
+library(tictoc)
 
-
+tic("Run Time")
 StatsTable<-read_xlsx("Warhammer Inventory.xlsx", skip=1)
 
 ##Summarizes data based on various groupings.##
@@ -41,3 +42,4 @@ DonutPlot_Model<- plot_ly(PieData_Model, labels = ~`Model Name`, values = ~Sum,
 DonutPlot_Model<-DonutPlot_Model%>% add_pie(hole=0.6)
 DonutPlot_Model<-DonutPlot_Model %>% layout(title = 'Total As Built Points by Model Name')
 DonutPlot_Model
+toc()
